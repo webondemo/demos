@@ -357,7 +357,6 @@
 
         /* REVIEW GENERATOR */
         function copyReview() {
-
             let food = ratings.food;
             let service = ratings.service;
             let atm = ratings.atm;
@@ -365,27 +364,39 @@
             let avg = (food + service + atm) / 3;
 
             let mood = "";
+            let overallReview = "";
 
-            if (avg >= 4.5) mood = "Excellent experience.";
-            else if (avg >= 3.5) mood = "Very good experience.";
-            else if (avg >= 2.5) mood = "Average experience.";
-            else mood = "Needs improvement.";
+            if (avg >= 4.5) {
+                mood = "Excellent experience.";
+                overallReview = "I had an excellent dining experience and would highly recommend this restaurant.";
+            } else if (avg >= 3.5) {
+                mood = "Very good experience.";
+                overallReview = "I had a pleasant dining experience and would recommend this restaurant to others.";
+            } else if (avg >= 2.5) {
+                mood = "Average experience.";
+                overallReview = "The experience was satisfactory, though there is room for improvement.";
+            } else {
+                mood = "Needs improvement.";
+                overallReview = "The restaurant needs improvement in several areas before I would recommend it.";
+            }
 
-            let review =
-          `${mood}
+            let review = `${mood}
 
             Food: ${"⭐".repeat(food)}${"☆".repeat(5 - food)}
             Service: ${"⭐".repeat(service)}${"☆".repeat(5 - service)}
             Atmosphere: ${"⭐".repeat(atm)}${"☆".repeat(5 - atm)}
 
+            Overall Review: ${overallReview}
+
             We spent ${spend}.`;
 
-            // MOBILE SAFE COPY METHOD
+            // Mobile-safe copy method
             let textarea = document.createElement("textarea");
             textarea.value = review;
             document.body.appendChild(textarea);
+
             textarea.select();
-            textarea.setSelectionRange(0, 99999); // for mobile
+            textarea.setSelectionRange(0, 99999); // Mobile support
 
             try {
                 document.execCommand("copy");
