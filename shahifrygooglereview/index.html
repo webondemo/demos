@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Shahi Restaurant Feedback</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #F5F2E9;
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        .app-header {
+            background: linear-gradient(135deg, #E31B23, #F7941D);
+            color: #fff;
+            padding: 25px 20px;
+            text-align: center;
+            border-radius: 0 0 25px 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.15);
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin: auto;
+            background: transparent;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+        }
+
+            .logo img {
+                height: 150px;
+                /* object-fit: contain; */
+                border-radius: 50%;
+                width: 150px;
+            }
+
+        /* CARDS */
+        .card {
+            border: none;
+            border-radius: 18px;
+            box-shadow: 0 4px 12px rgba(0,0,0,.08);
+            background: #fff;
+        }
+
+        h6 {
+            color: #2C2C2C;
+            font-weight: 600;
+        }
+
+        /* STARS */
+        .star {
+            font-size: 30px;
+            cursor: pointer;
+            color: #d6d6d6;
+            transition: .2s;
+        }
+
+            .star.active {
+                color: #FFC107;
+            }
+
+            .star:hover {
+                transform: scale(1.15);
+            }
+
+        /* SPENDING BUTTONS */
+        .spending-btn {
+            margin: 5px;
+            border-radius: 30px;
+            border: 2px solid #F7941D;
+            color: #F7941D;
+            font-weight: 500;
+        }
+
+            .spending-btn:hover {
+                background: #F7941D;
+                color: white;
+            }
+
+            .spending-btn.active {
+                background: #F7941D;
+                color: white;
+                border-color: #F7941D;
+            }
+
+        /* MAIN SUBMIT BUTTON */
+        .btn-primary {
+            background: linear-gradient(135deg, #E31B23, #F7941D);
+            border: none;
+            border-radius: 12px;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+            .btn-primary:hover {
+                opacity: .95;
+            }
+
+        /* COPY BUTTON */
+        .btn-success {
+            background: #F7941D;
+            border: none;
+            border-radius: 12px;
+        }
+
+            .btn-success:hover {
+                background: #e68200;
+            }
+
+        /* GOOGLE BUTTON */
+        .btn-warning {
+            background: #FFC107;
+            border: none;
+            color: #2C2C2C;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        /* RESET BUTTON */
+        .btn-outline-primary {
+            border-color: #E31B23;
+            color: #E31B23;
+            border-radius: 12px;
+        }
+
+            .btn-outline-primary:hover {
+                background: #E31B23;
+                color: white;
+            }
+
+        /* THANK YOU CARD */
+        #thankyou .card {
+            background: linear-gradient(180deg, #ffffff, #fff7ef);
+        }
+
+        #thankyou h4 {
+            color: #E31B23;
+            font-weight: 700;
+        }
+
+        /* FORM ANIMATION */
+        .card {
+            transition: .3s;
+        }
+
+            .card:hover {
+                transform: translateY(-2px);
+            }
+
+        #thankyou {
+            display: none;
+        }
+
+        @media (max-width: 576px) {
+            .logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            .app-header h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div class="app-header">
+
+        <div class="logo">
+            <img src="logo.png" alt="Shahi Logo">
+        </div>
+
+        <h3 class="mt-3 fw-bold">SHAHI FRY CENTER</h3>
+
+        <p class="mb-0">
+            Food You can eat Everyday ❤️
+        </p>
+
+    </div>
+
+    <div class="container mt-4">
+
+        <!-- FORM -->
+        <div id="form">
+
+            <!-- FOOD -->
+            <div class="card p-3 mb-3">
+                <h6>Food Quality <span class="text-danger">*</span></h6>
+                <div>
+                    <i class="bi bi-star-fill star" onclick="rate('food',1)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('food',2)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('food',3)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('food',4)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('food',5)"></i>
+                </div>
+            </div>
+
+            <!-- SERVICE -->
+            <div class="card p-3 mb-3">
+                <h6>Service <span class="text-danger">*</span></h6>
+                <div>
+                    <i class="bi bi-star-fill star" onclick="rate('service',1)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('service',2)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('service',3)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('service',4)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('service',5)"></i>
+                </div>
+            </div>
+
+            <!-- ATMOSPHERE -->
+            <div class="card p-3 mb-3">
+                <h6>Atmosphere <span class="text-danger">*</span></h6>
+                <div>
+                    <i class="bi bi-star-fill star" onclick="rate('atm',1)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('atm',2)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('atm',3)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('atm',4)"></i>
+                    <i class="bi bi-star-fill star" onclick="rate('atm',5)"></i>
+                </div>
+            </div>
+
+            <!-- SPENDING -->
+            <div class="card p-3 mb-3">
+                <h6>How much did you spend per person? <span class="text-danger">*</span></h6>
+
+                <div>
+                    <button class="btn btn-outline-primary spending-btn" onclick="setSpend('₹1–200')">₹1–200</button>
+                    <button class="btn btn-outline-primary spending-btn" onclick="setSpend('₹200–400')">₹200–400</button>
+                    <button class="btn btn-outline-primary spending-btn" onclick="setSpend('₹400–600')">₹400–600</button>
+                    <button class="btn btn-outline-primary spending-btn" onclick="setSpend('₹600–800')">₹600–800</button>
+                </div>
+            </div>
+
+            <button class="btn btn-primary w-100" onclick="submitFeedback()">
+                Submit Feedback
+            </button>
+
+        </div>
+
+        <!-- THANK YOU -->
+        <div id="thankyou">
+
+            <div class="card p-4 mt-3 text-center">
+                <h4>Thank you! 🙏</h4>
+                <p>Your feedback helps us improve.</p>
+
+                <button class="btn btn-success w-100 mb-2" onclick="copyReview()">
+                    <i class="bi bi-clipboard"></i>Copy Review Text
+                </button>
+
+                <a href="https://search.google.com/local/writereview?placeid=ChIJw_z0eOpOXjkRPKaPa4pGT0E"
+                    target="_blank">
+                    <button class="btn btn-warning w-100">
+                        ⭐ Leave Google Review
+                    </button>
+                </a>
+
+                <button class="btn btn-outline-primary w-100 mt-2" onclick="resetForm()">
+                    Fill Again
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        let ratings = { food: 0, service: 0, atm: 0 };
+        let spend = "";
+
+        /* STAR RATING */
+        function rate(type, value) {
+            ratings[type] = value;
+
+            let parent = event.target.parentNode;
+            let stars = parent.querySelectorAll(".star");
+
+            stars.forEach((star, index) => {
+                star.classList.toggle("active", index < value);
+        });
+        }
+
+        /* SPENDING */
+        function setSpend(value) {
+            spend = value;
+
+            let buttons = document.querySelectorAll(".spending-btn");
+            buttons.forEach(btn => btn.classList.remove("active"));
+
+            event.target.classList.add("active");
+        }
+
+        /* SUBMIT */
+        function submitFeedback() {
+
+            if (!ratings.food || !ratings.service || !ratings.atm || !spend) {
+                alert("Please complete all required fields (*)");
+                return;
+            }
+
+            document.getElementById("form").style.display = "none";
+            document.getElementById("thankyou").style.display = "block";
+
+            history.pushState({ page: "thankyou" }, "");
+        }
+
+        /* RESET FORM */
+        function resetForm() {
+
+            ratings = { food: 0, service: 0, atm: 0 };
+            spend = "";
+
+            document.querySelectorAll(".star").forEach(star => {
+                star.classList.remove("active");
+        });
+
+        document.querySelectorAll(".spending-btn").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        document.getElementById("form").style.display = "block";
+        document.getElementById("thankyou").style.display = "none";
+        }
+
+        /* BACK BUTTON FIX */
+        window.addEventListener("popstate", function () {
+            resetForm();
+        });
+
+        /* ⭐ STAR STRING */
+        function starText(n) {
+            return "⭐".repeat(n) + "☆".repeat(5 - n);
+        }
+
+        /* REVIEW GENERATOR */
+        function copyReview() {
+
+            let food = ratings.food;
+            let service = ratings.service;
+            let atm = ratings.atm;
+
+            let avg = (food + service + atm) / 3;
+
+            let mood = "";
+
+            if (avg >= 4.5) mood = "Excellent experience.";
+            else if (avg >= 3.5) mood = "Very good experience.";
+            else if (avg >= 2.5) mood = "Average experience.";
+            else mood = "Needs improvement.";
+
+            let review =
+          `${mood}
+
+            Food: ${"⭐".repeat(food)}${"☆".repeat(5 - food)}
+            Service: ${"⭐".repeat(service)}${"☆".repeat(5 - service)}
+            Atmosphere: ${"⭐".repeat(atm)}${"☆".repeat(5 - atm)}
+
+            We spent ${spend}.`;
+
+            // MOBILE SAFE COPY METHOD
+            let textarea = document.createElement("textarea");
+            textarea.value = review;
+            document.body.appendChild(textarea);
+            textarea.select();
+            textarea.setSelectionRange(0, 99999); // for mobile
+
+            try {
+                document.execCommand("copy");
+                alert("Review copied successfully!");
+            } catch (err) {
+                alert("Copy failed. Please long press and copy manually.");
+            }
+
+            document.body.removeChild(textarea);
+        }
+
+    </script>
+
+</body>
+</html>
