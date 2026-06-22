@@ -1,6 +1,6 @@
 ﻿// maintenance.js
-const maintenance = false;
-
+const maintenance = true;
+// false
 if (maintenance) {
     fetch("appoffline.html")
         .then(res => {
