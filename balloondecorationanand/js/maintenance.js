@@ -5,7 +5,7 @@ if (maintenance) {
     fetch("appoffline.html")
         .then(res => {
             if (res.ok) {
-                window.location.href = "appoffline.html";
+                window.location.href = "demos/balloondecorationanand/appoffline.html";
 } else {
     showMessage();
 }
